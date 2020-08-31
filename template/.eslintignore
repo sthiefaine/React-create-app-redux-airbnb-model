@@ -1,0 +1,8 @@
+node_modules/
+dist/
+config/
+postcss.config.js
+src/setupTests.js
+src/serviceWorker.js
+src/App.test.js
+src/index.js
