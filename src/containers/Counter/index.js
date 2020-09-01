@@ -32,7 +32,7 @@ const mapStateToProps = (state) => ({
 *  - ownProps : les props passées au container
 * Pas de disptach à transmettre ? const mapDispatchToProps = {};
 */
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = (dispatch) => ({
   counterIncrement: () => {
     dispatch(counterIncrement());
   },

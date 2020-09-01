@@ -8,7 +8,6 @@ import {
 
 const initialState = {
   value: 0,
-  counterIncrementValue: '',
 };
 
 const counter = (state = initialState, action = {}) => {
@@ -30,7 +29,7 @@ const counter = (state = initialState, action = {}) => {
     case COUNTER_INCREMENT_BY_AMOUNT: {
       return {
         ...state,
-        value: (state.value + parseInt(state.counterIncrementValue, 10)),
+        value: ((Number(parseInt(state.counterIncrementValue, 10)) || 0) + state.value),
       };
     }
 

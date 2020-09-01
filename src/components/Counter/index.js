@@ -1,5 +1,6 @@
 // == Import npm
 import React from 'react';
+import PropTypes from 'prop-types';
 
 // == Import SCSS
 import './styles.scss';
@@ -27,13 +28,13 @@ const Counter = ({
 
   const handleCounterIncrementByAmount = () => {
     return (
-      counterIncrementByAmount(Number(counterIncrementValue) || 0)
+      counterIncrementByAmount()
     );
   };
 
   const handleASYNCCounterIncrementByAmount = () => {
     setTimeout(() => {
-      counterIncrementByAmount(Number(counterIncrementValue) || 0);
+      counterIncrementByAmount();
     }, 1000);
   };
 
@@ -89,5 +90,20 @@ const Counter = ({
     </div>
   );
 };
+
+Counter.propTypes = {
+  counterIncrement: PropTypes.func.isRequired,
+  setCounterIncrementAmount: PropTypes.func.isRequired,
+  counterDecrement: PropTypes.func.isRequired,
+  counterIncrementByAmount: PropTypes.func.isRequired,
+  value: PropTypes.number.isRequired,
+  counterIncrementValue: PropTypes.number,
+
+};
+
+Counter.defaultProps = {
+  counterIncrementValue: 0,
+};
+
 // == Export
 export default Counter;

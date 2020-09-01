@@ -5,13 +5,13 @@
     "browser": true
   },
   "rules": {
+    "arrow-body-style": [0],
     "jsx-a11y/label-has-associated-control": [ 2, {
       "labelComponents": ["label"],
       "labelAttributes": ["htmlFor"],
       "controlComponents": ["input"],
       "depth": 3
     }],
-    "arrow-body-style": [0],
     "brace-style": ["error", "stroustrup"],
     "no-param-reassign": [
       "error",
