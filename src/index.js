@@ -1,13 +1,15 @@
 import React from 'react';
 import { render } from 'react-dom';
+
 import { Provider } from 'react-redux';
+import store from 'src/store';
+
+import { ThemeProvider } from 'src/context/themes';
 
 import App from 'src/containers/App';
 
 // == Import : Router
 import { BrowserRouter as Router } from 'react-router-dom';
-
-import store from 'src/store';
 
 import * as serviceWorker from './serviceWorker';
 
@@ -16,9 +18,11 @@ import 'src/styles/index.scss';
 const rootReactElement = (
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
-        <App />
-      </Router>
+      <ThemeProvider>
+        <Router>
+          <App />
+        </Router>
+      </ThemeProvider>
     </Provider>
   </React.StrictMode>
 );

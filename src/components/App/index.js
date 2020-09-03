@@ -3,24 +3,50 @@ import React, {
   useEffect,
 } from 'react';
 
+import {
+  useTheme,
+} from 'src/context/themes';
+
 // == Import;
 import Counter from 'src/containers/Counter';
 
 import logo from 'src/assets/logo.svg';
 
 import './styles.scss';
+import Wrapper from 'src/styles/Wrapper';
 
 // == Composant
 const App = () => {
   useEffect(() => {
     document.title = 'React Redux Model';
+    // eslint-disable-next-line no-console
     console.log('App - useEffect ');
   }, []);
 
+  const {
+    toggleTheme,
+    currentTheme,
+  } = useTheme();
+
+  const handelOnClickChangeTheme = (event) => {
+    return (
+      toggleTheme(event.target.id)
+    );
+  };
+
   return (
-    <div className="App">
+    <Wrapper className="App">
+
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
+
+        <div
+          className="button"
+          id={currentTheme === 'dark' ? 'light' : 'dark'}
+          onClick={handelOnClickChangeTheme}
+        >{currentTheme === 'dark' ? 'Light' : 'Dark'} Theme
+        </div>
+
         <Counter />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -64,7 +90,7 @@ const App = () => {
           </a>
         </span>
       </header>
-    </div>
+    </Wrapper>
   );
 };
 // == Export
