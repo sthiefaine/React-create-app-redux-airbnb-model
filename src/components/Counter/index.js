@@ -8,8 +8,8 @@ import './styles.scss';
 // == Composant
 const Counter = ({
   counterIncrement,
-  setCounterIncrementAmount,
   counterDecrement,
+  setCounterIncrementAmount,
   counterIncrementByAmount,
   value,
   counterIncrementValue,
@@ -40,7 +40,7 @@ const Counter = ({
 
   const handleSetCounterIncrementAmount = (event) => {
     return (
-      setCounterIncrementAmount(parseInt(event.target.value, 10))
+      setCounterIncrementAmount(event.target.value)
     );
   };
 
@@ -97,12 +97,6 @@ Counter.propTypes = {
   counterDecrement: PropTypes.func.isRequired,
   counterIncrementByAmount: PropTypes.func.isRequired,
   value: PropTypes.number.isRequired,
-  counterIncrementValue: PropTypes.number,
-
-};
-
-Counter.defaultProps = {
-  counterIncrementValue: 0,
 };
 
 // == Export
