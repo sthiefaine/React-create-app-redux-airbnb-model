@@ -23,6 +23,7 @@ const rootReactElement = (
           <App />
         </Router>
       </ThemeProvider>
+
     </Provider>
   </React.StrictMode>
 );
