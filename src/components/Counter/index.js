@@ -2,6 +2,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { Translate } from 'src/context/languages';
+
 // == Import SCSS
 import './styles.scss';
 
@@ -77,14 +79,14 @@ const Counter = ({
           className="button"
           onClick={() => handleCounterIncrementByAmount()}
         >
-          Add Amount
+          <Translate trId="addAmount" />
         </button>
         <button
           type="button"
           className="button button__asyncButton"
           onClick={() => handleASYNCCounterIncrementByAmount()}
         >
-          Add Async
+          <Translate trId="addASYNCAmount" />
         </button>
       </div>
     </div>

@@ -4,6 +4,7 @@ import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 import store from 'src/store';
 
+import { LanguageProvider } from 'src/context/languages';
 import { ThemeProvider } from 'src/context/themes';
 
 import App from 'src/containers/App';
@@ -18,11 +19,14 @@ import 'src/styles/index.scss';
 const rootReactElement = (
   <React.StrictMode>
     <Provider store={store}>
-      <ThemeProvider>
-        <Router>
-          <App />
-        </Router>
-      </ThemeProvider>
+
+      <LanguageProvider>
+        <ThemeProvider>
+          <Router>
+            <App />
+          </Router>
+        </ThemeProvider>
+      </LanguageProvider>
 
     </Provider>
   </React.StrictMode>

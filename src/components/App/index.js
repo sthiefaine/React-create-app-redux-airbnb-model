@@ -7,6 +7,8 @@ import {
   useTheme,
 } from 'src/context/themes';
 
+import LanguageSelector from 'src/components/Language';
+
 // == Import;
 import Counter from 'src/containers/Counter';
 
@@ -14,6 +16,7 @@ import logo from 'src/assets/logo.svg';
 
 import './styles.scss';
 import Wrapper from 'src/styles/Wrapper';
+import { Translate } from 'src/context/languages';
 
 // == Composant
 const App = () => {
@@ -40,19 +43,17 @@ const App = () => {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
 
+        <LanguageSelector />
         <div
           className="button"
           id={currentTheme === 'dark' ? 'light' : 'dark'}
           onClick={handelOnClickChangeTheme}
-        >{currentTheme === 'dark' ? 'Light' : 'Dark'} Theme
+        >{currentTheme === 'dark' ? <Translate trId="lightTheme" /> : <Translate trId="darkTheme" />}
         </div>
 
         <Counter />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
         <span>
-          <span>Learn </span>
+          <span><Translate trId="Learn" /> </span>
           <a
             className="App-link"
             href="https://reactjs.org/"
@@ -79,7 +80,7 @@ const App = () => {
           >
             Redux Toolkit
           </a>
-          ,<span> and </span>
+          ,<span> <Translate trId="and" /> </span>
           <a
             className="App-link"
             href="https://react-redux.js.org/"
