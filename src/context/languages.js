@@ -14,13 +14,12 @@ export const LanguageContext = createContext({
 
 // it provides the language context to app
 export function LanguageProvider({ children }) {
-
   let defaultLanguage = localStorage.getItem('lang');
   if (!defaultLanguage) {
     defaultLanguage = window.navigator.language.substring(0, 2);
   }
 
-  const [userLanguage, setUserLanguage] = useState('en');
+  const [userLanguage, setUserLanguage] = useState(defaultLanguage);
 
   const provider = {
     userLanguage,
@@ -40,6 +39,12 @@ export function LanguageProvider({ children }) {
 }
 
 export function Translate({ trId }) {
-  const languageContext = useContext(LanguageContext);
-  return languageContext.dictionary[0][trId] || trId;
+  const { dictionary } = useContext(LanguageContext);
+  console.log('translate1', dictionary[0][trId]);
+
+  return (
+
+    // eslint-disable-next-line no-new-wrappers
+    dictionary[0][trId] || trId
+  );
 }

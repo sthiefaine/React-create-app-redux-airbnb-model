@@ -3,6 +3,8 @@ import React, {
   useEffect,
 } from 'react';
 
+import { renderToString } from 'react-dom/server';
+
 import {
   useTheme,
 } from 'src/context/themes';
@@ -10,13 +12,14 @@ import {
 import LanguageSelector from 'src/components/Language';
 
 // == Import;
+import TranslateComponent from 'src/components/Translate';
+import { Translate } from 'src/context/languages';
 import Counter from 'src/containers/Counter';
 
 import logo from 'src/assets/logo.svg';
 
 import './styles.scss';
 import Wrapper from 'src/styles/Wrapper';
-import { Translate } from 'src/context/languages';
 
 // == Composant
 const App = () => {
@@ -37,6 +40,12 @@ const App = () => {
     );
   };
 
+  const test = () => {
+    return (
+      renderToString(<Translate trId="Learn" />)
+    );
+  };
+
   return (
     <Wrapper className="App">
 
@@ -52,6 +61,17 @@ const App = () => {
         </div>
 
         <Counter />
+
+        <input
+          type="text"
+          placeholder={TranslateComponent('Learn')}
+        />
+
+        <input
+          type="text"
+          placeholder={<Translate trId="Learn" />}
+        />
+
         <span>
           <span><Translate trId="Learn" /> </span>
           <a
@@ -80,7 +100,7 @@ const App = () => {
           >
             Redux Toolkit
           </a>
-          ,<span> <Translate trId="and" /> </span>
+          ,<span> <Translate trId="and" /> {TranslateComponent('and')} </span>
           <a
             className="App-link"
             href="https://react-redux.js.org/"
