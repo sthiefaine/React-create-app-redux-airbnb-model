@@ -10,8 +10,7 @@ import {
   counterIncrement,
   counterDecrement,
   counterIncrementByAmount,
-  setCounterIncrementAmount,
-} from 'src/actions/counter';
+} from 'src/redux/actions/counter';
 
 /* === State (données) ===
 * - mapStateToProps retroune un objet de props pour le composant de présentation
@@ -22,7 +21,6 @@ import {
 */
 const mapStateToProps = (state) => ({
   value: state.counter.value,
-  counterIncrementValue: state.counter.counterIncrementValue,
 });
 
 /* === Actions ===
@@ -41,12 +39,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(counterDecrement());
   },
 
-  counterIncrementByAmount: () => {
-    dispatch(counterIncrementByAmount());
-  },
-
-  setCounterIncrementAmount: (value) => {
-    dispatch(setCounterIncrementAmount(value));
+  counterIncrementByAmount: (payload) => {
+    dispatch(counterIncrementByAmount(payload));
   },
 });
 

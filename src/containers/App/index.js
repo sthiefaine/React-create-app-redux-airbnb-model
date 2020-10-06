@@ -21,7 +21,9 @@ const mapStateToProps = null;
  *  - ownProps : les props passées au container
  * Pas de disptach à transmettre ? const mapDispatchToProps = {};
  */
-const mapDispatchToProps = (dispatch, ownProps) => ({});
+// const mapDispatchToProps = (dispatch, ownProps) => ({});
+
+const mapDispatchToProps = {};
 
 // == Export
 export default connect(
