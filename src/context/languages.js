@@ -40,10 +40,10 @@ export function LanguageProvider({ children }) {
 
 export function Translate({ trId }) {
   const { dictionary } = useContext(LanguageContext);
-  console.log('translate1', dictionary[0][trId]);
+
+  console.log('translate result =>', dictionary[0][trId]);
 
   return (
-
     // eslint-disable-next-line no-new-wrappers
     dictionary[0][trId] || trId
   );

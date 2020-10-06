@@ -1,5 +1,5 @@
 // == Import npm
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { Translate } from 'src/context/languages';
@@ -11,38 +11,20 @@ import './styles.scss';
 const Counter = ({
   counterIncrement,
   counterDecrement,
-  setCounterIncrementAmount,
   counterIncrementByAmount,
   value,
-  counterIncrementValue,
 }) => {
-  const handleCounterIncrement = () => {
-    return (
-      counterIncrement()
-    );
-  };
-
-  const handleCounterDecrement = () => {
-    return (
-      counterDecrement()
-    );
-  };
-
-  const handleCounterIncrementByAmount = () => {
-    return (
-      counterIncrementByAmount()
-    );
-  };
+  const [incrementAmount, setIncrementAmount] = useState('');
 
   const handleASYNCCounterIncrementByAmount = () => {
     setTimeout(() => {
-      counterIncrementByAmount();
+      counterIncrementByAmount(incrementAmount);
     }, 1000);
   };
 
   const handleSetCounterIncrementAmount = (event) => {
     return (
-      setCounterIncrementAmount(event.target.value)
+      setIncrementAmount(event.target.value)
     );
   };
 
@@ -53,7 +35,7 @@ const Counter = ({
           type="button"
           className="button"
           aria-label="Increment value"
-          onClick={() => handleCounterIncrement()}
+          onClick={() => counterIncrement()}
         >
           +
         </button>
@@ -62,7 +44,7 @@ const Counter = ({
           type="button"
           className="button"
           aria-label="Decrement value"
-          onClick={() => handleCounterDecrement()}
+          onClick={() => counterDecrement()}
         >
           -
         </button>
@@ -71,13 +53,13 @@ const Counter = ({
         <input
           className="textbox"
           aria-label="Set increment amount"
-          value={counterIncrementValue}
+          value={incrementAmount}
           onChange={(event) => handleSetCounterIncrementAmount(event)}
         />
         <button
           type="button"
           className="button"
-          onClick={() => handleCounterIncrementByAmount()}
+          onClick={() => counterIncrementByAmount(incrementAmount)}
         >
           <Translate trId="addAmount" />
         </button>
@@ -95,10 +77,9 @@ const Counter = ({
 
 Counter.propTypes = {
   counterIncrement: PropTypes.func.isRequired,
-  setCounterIncrementAmount: PropTypes.func.isRequired,
   counterDecrement: PropTypes.func.isRequired,
   counterIncrementByAmount: PropTypes.func.isRequired,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.number,
 };
 
 // == Export
